@@ -8,19 +8,16 @@ jobs:
   build:
     name: Lint code base
     runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x,15.x]
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 15.14.0
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node }}
+        node-version: "15.14.0"
     - name: npm Install
-      run: npm install
-    - name: npm Build
-      run: npm build
+      run: npm run install
+    - name: npm run build
+      run: npm run build
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
       with:
