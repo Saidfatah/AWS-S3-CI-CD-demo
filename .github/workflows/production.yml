@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   build:
-    name: Lint code base
+    name: Build project and deploy to S3
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v3
@@ -15,7 +15,7 @@ jobs:
       with:
         node-version: "15.14.0"
     - name: npm Install
-      run: npm run install
+      run: npm install
     - name: npm run build
       run: npm run build
     - name: Deploy to S3
